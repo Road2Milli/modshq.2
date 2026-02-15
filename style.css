@@ -55,14 +55,14 @@ body {
 }
 
 .logo span {
-    color: #ff6aff;
+    color: #40FF79;
 }
 
 /* DISCORD BUTTON */
 .discord-btn {
     padding: 8px 16px;
     border-radius: 25px;
-    background: linear-gradient(90deg, #ff6aff, #00fff6);
+    background: linear-gradient(90deg, #40FF79, #00fff6);
     color: white;
     text-decoration: none;
     font-size: 0.8rem;
@@ -85,8 +85,8 @@ body {
     font-weight: 700;
     font-size: 1.6rem; /* smaller than before, fits card text */
     line-height: 1.2;
-    color: #ff6aff;
-    text-shadow: 0 0 5px #ff6aff, 0 0 10px #ff6aff55;
+    color: #40FF79;
+    text-shadow: 0 0 5px #40FF79, 0 0 10px #ff6aff55;
     text-align: center;
 }
 
