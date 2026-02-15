@@ -1,99 +1,348 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: rgb(255, 255, 255);
-    color: #000000;
-    text-align: center;
+* {
     margin: 0;
     padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-sizing: border-box;
 }
 
-header {
-    padding: 20px;
-    background-color: #ebebeb;
+body {
+    font-family: 'Orbitron', sans-serif;
+    background: radial-gradient(ellipse at bottom, #090a1a 0%, #000000 100%);
+    color: white;
+    overflow-x: hidden;
 }
 
-header a {
-    color: #000000;
-    text-decoration: none;
-    margin-top: 10px;
-    display: inline-block;
+/* 🌌 STAR BACKGROUND */
+.stars {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    background-image:
+        radial-gradient(2px 2px at 20px 30px, white, transparent),
+        radial-gradient(2px 2px at 100px 150px, white, transparent),
+        radial-gradient(2px 2px at 200px 80px, white, transparent),
+        radial-gradient(2px 2px at 300px 200px, white, transparent),
+        radial-gradient(1px 1px at 400px 50px, white, transparent),
+        radial-gradient(2px 2px at 500px 300px, white, transparent);
+    background-repeat: repeat;
+    background-size: 600px 400px;
+    animation: moveStars 60s linear infinite;
+    z-index: -1;
+    opacity: 0.4;
 }
 
-.mods-container {
+@keyframes moveStars {
+    from { transform: translateY(0); }
+    to { transform: translateY(-1000px); }
+}
+
+/* NAVBAR */
+.navbar {
     display: flex;
-    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 25px;
+    background: rgba(10,10,25,0.6);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.logo {
+    font-family: 'Press Start 2P', cursive;
+    font-weight: 700;
+    font-size: 1.3rem;
+    letter-spacing: 2px;
+}
+
+.logo span {
+    color: #ff6aff;
+}
+
+/* DISCORD BUTTON */
+.discord-btn {
+    padding: 8px 16px;
+    border-radius: 25px;
+    background: linear-gradient(90deg, #ff6aff, #00fff6);
+    color: white;
+    text-decoration: none;
+    font-size: 0.8rem;
+    transition: 0.3s;
+}
+
+.discord-btn:hover {
+    box-shadow: 0 0 15px #ff6aff88;
+    transform: translateY(-2px);
+}
+
+/* HERO */
+.hero {
+    text-align: center;
+    padding: 80px 20px 50px;
+}
+
+.neon-text {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 1.6rem; /* smaller than before, fits card text */
+    line-height: 1.2;
+    color: #ff6aff;
+    text-shadow: 0 0 5px #ff6aff, 0 0 10px #ff6aff55;
+    text-align: center;
+}
+
+.glow-text {
+    opacity: 0.8;
+    color: #00fff6;
+    text-shadow: 0 0 4px #00fff6, 0 0 8px #00fff655;
+    font-size: 0.8rem; /* fits cards better */
+    line-height: 1.3;
+    text-align: center;
+}
+
+/* GRID */
+.mods-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 25px;
+    padding: 30px;
+}
+
+/* GALAXY CARD */
+.card {
+    background: rgba(255,255,255,0.05);
+    border-radius: 15px;
+    padding: 22px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,106,255,0.3);
+    transition: 0.3s ease;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 0 25px #ff6aff55;
+}
+
+.card h3 {
+    margin-bottom: 6px;
+}
+
+.card p {
+    max-height: 4em;
+    overflow: hidden;
+}
+
+/* BUTTON */
+.btn {
+    display: inline-block;
+    padding: 7px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    text-decoration: none;
+    font-weight: 600;
+    background: linear-gradient(90deg, #ff6aff, #00fff6);
+    color: white;
+    transition: 0.3s;
+    text-align: center;
+}
+
+.btn:hover {
+    box-shadow: 0 0 20px #00fff688;
+    transform: scale(1.05);
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 25px;
+    font-size: 0.75rem;
+    opacity: 0.5;
+}
+
+/* MOBILE OPTIMIZATION */
+@media (max-width: 500px) {
+    .hero .neon-text {
+        font-size: 1.3rem;
+    }
+
+    .mods-grid {
+        padding: 20px;
+        gap: 18px;
+    }
+}
+
+.mods-section {
+    padding: 60px 20px;
+}
+
+/* ------------------------- */
+/* MOD CARDS - NEON GALAXY */
+/* ------------------------- */
+
+.mods-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
     padding: 20px;
 }
 
 .mod-card {
-    background-color: #f3f3f3;
-    padding: 15px;
-    border-radius: 10px;
-    width: 220px;
-}
-
-.view-btn, .download-btn {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 10px 15px;
-    background-color: #001aff;
-    color: #ffffff;
-    text-decoration: none;
-    border-radius: 5px;
-}
-
-.view-btn:hover, .download-btn:hover {
-    background-color: #2b39ff;
-}
-
-footer {
+    background: rgba(0,0,0,0.3);
+    border: 2px solid #00ffff; /* default border color */
+    border-radius: 15px;
     padding: 20px;
-    background-color: #ebebeb;
-    color: #000000;
-}
-h1{
-    color: #000000;
-    font-family: monospace;
-}
-h2{
-    color:#000000;
-    font-family: monospace;
-}
-p{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-/* 📱 Fix images on mobile */
-img {
-    max-width: 100%;
-    height: auto;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
 }
 
-/* 📱 Fix YouTube videos to be responsive */
-.video-container {
-    position: relative;
-    padding-bottom: 56.25%; /* 16:9 ratio */
-    height: 0;
-    overflow: hidden;
-    max-width: 100%;
+.mod-card h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    background: linear-gradient(90deg, #ff00ff, #00ffff); /* default gradient */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 5px #ff00ff, 0 0 10px #00ffff; /* neon glow */
+    margin-bottom: 15px;
 }
 
-.video-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+.mod-card .view-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #00ffff;
+    font-weight: bold;
+    font-family: 'Orbitron', sans-serif;
+    border: 2px solid #00ffff;
+    box-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff;
+    transition: all 0.3s ease;
 }
 
-/* 📱 General page padding for mobile */
-main {
-    padding: 15px;
+.mod-card:hover {
+    transform: translateY(-5px);
+    border-color: #ff00ff;
+    box-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff;
+}
+
+.mod-card:hover .view-btn {
+    color: #ff00ff;
+    border-color: #ff00ff;
+    box-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff;
+}
+
+.mod-card:active {
+    transform: translateY(0);
+    border-color: #00ff00;
+    box-shadow: 0 0 15px #00ff00, 0 0 25px #00ff00;
+}
+
+.mod-card:active .view-btn {
+    color: #00ff00;
+    border-color: #00ff00;
+    box-shadow: 0 0 15px #00ff00, 0 0 25px #00ff00;
+}
+
+/* Responsive tweaks */
+@media screen and (max-width: 600px) {
+    .mod-card h3 {
+        font-size: 16px;
+    }
+    .mod-card .view-btn {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+}
+
+/* ================= MOD PAGE STYLE ================= */
+
+.mod-page {
+    background: radial-gradient(circle at top, #0b0b2a, #000014);
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    min-height: 100vh;
+}
+
+.mod-header {
+    text-align: center;
+    padding: 40px 20px 10px;
+}
+
+.mod-header h1 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    text-shadow: 0 0 10px cyan;
+}
+
+.back-btn {
+    color: #00f5ff;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.back-btn:hover {
+    text-shadow: 0 0 8px #00f5ff;
+}
+
+.mod-content {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
     text-align: center;
 }
 
+.mod-content p {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
 
-    
+/* Responsive YouTube */
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    margin-bottom: 25px;
+}
 
+.video-wrapper iframe {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    border-radius: 12px;
+}
+
+/* Download buttons */
+.download-group {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.download-btn {
+    padding: 10px 22px;
+    border-radius: 25px;
+    text-decoration: none;
+    background: linear-gradient(45deg, #00f5ff, #7b2fff);
+    color: white;
+    font-size: 13px;
+    transition: 0.3s;
+}
+
+.download-btn:hover {
+    box-shadow: 0 0 20px #00f5ff;
+    transform: translateY(-3px);
+}
+
+.mod-footer {
+    text-align: center;
+    padding: 30px;
+    font-size: 12px;
+    opacity: 0.6;
+}
